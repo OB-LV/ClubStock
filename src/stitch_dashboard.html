@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ClubStock University | Institutional Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;900&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#d5e3ff",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#97d5a4",
+                    "background": "#f8f9fa",
+                    "on-primary-container": "#848484",
+                    "secondary": "#2f5f9c",
+                    "on-tertiary-fixed-variant": "#13512c",
+                    "on-tertiary-container": "#559065",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#00210d",
+                    "primary": "#000000",
+                    "on-secondary-fixed": "#001c3b",
+                    "tertiary-fixed": "#b2f1bf",
+                    "on-background": "#191c1d",
+                    "on-tertiary-fixed": "#00210d",
+                    "on-surface-variant": "#4c4546",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container-high": "#e7e8e9",
+                    "primary-fixed": "#e2e2e2",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#a6c8ff",
+                    "surface-container-low": "#f3f4f5",
+                    "on-secondary-fixed-variant": "#0c4783",
+                    "surface": "#f8f9fa",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#7e7576",
+                    "tertiary": "#000000",
+                    "on-secondary-container": "#114a85",
+                    "surface-variant": "#e1e3e4",
+                    "primary-container": "#1b1b1b",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "outline-variant": "#cfc4c5",
+                    "secondary-container": "#8ebbfe",
+                    "on-primary-fixed-variant": "#474747",
+                    "surface-bright": "#f8f9fa",
+                    "surface-container": "#edeeef",
+                    "on-surface": "#191c1d",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#1b1b1b",
+                    "surface-tint": "#5e5e5e",
+                    "inverse-primary": "#c6c6c6",
+                    "surface-dim": "#d9dadb",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "inverse-on-surface": "#f0f1f2",
+                    "univ-green": "#1E5A34",
+                    "academic-blue": "#1A4F8B"
+            },
+            "borderRadius": {
+                    "DEFAULT": "4px",
+                    "lg": "4px",
+                    "xl": "4px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "unit-8": "2rem",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px",
+                    "unit-1": "0.25rem",
+                    "base": "4px",
+                    "unit-4": "1rem",
+                    "unit-2": "0.5rem",
+                    "unit-12": "3rem"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg-mobile": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        .active-nav-indicator {
+            position: absolute;
+            right: -1px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #000000;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f8f9fa;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cfc4c5;
+        }
+    </style>
+</head>
+<body class="bg-background text-primary font-body-md">
+<!-- Sidebar Navigation -->
+<aside class="flex flex-col fixed left-0 top-0 h-full py-unit-8 px-unit-4 bg-surface border-r border-outline-variant w-64 z-50">
+<div class="mb-unit-12 px-unit-2">
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary">CLUBSTOCK</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mt-1">University Admin</p>
+</div>
+<nav class="flex-grow space-y-1">
+<!-- Navigation Items mapped from Shared Components Hierarchy -->
+<a class="relative flex items-center gap-3 px-unit-4 py-3 text-primary font-bold bg-surface-container-low transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md">Overview</span>
+<div class="active-nav-indicator"></div>
+</a>
+<a class="flex items-center gap-3 px-unit-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-body-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-unit-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md">Members</span>
+</a>
+<a class="flex items-center gap-3 px-unit-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-body-md">Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-unit-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-unit-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-unit-8 border-t border-outline-variant px-unit-2">
+<button class="w-full bg-primary text-on-primary font-bold py-3 mb-6 hover:bg-zinc-800 transition-colors">
+                New Entry
+            </button>
+<div class="flex items-center gap-3 cursor-pointer group">
+<img class="w-10 h-10 border border-outline-variant object-cover" data-alt="A sharp, minimalist profile portrait of a university administrator in professional academic attire, set against a solid neutral grey background with high-contrast, clean lighting that emphasizes precision and authority. The aesthetic is professional and editorial, reflecting the haute utilitarian style of a top-tier educational institution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5dG8k3RnN2QO7XGDV0eMxWkYH1MR45SayXxYefoIhsIsm4eKsGWosZfxQkcxwh1WtxPyqAWVdrEX9BolJ6Ajk9V19Y9FP_FzIF-L1M8OQNqyQUts4YGdeRAnDfHjzDNuk6tX8JCND85J6n53GRDLvkuAkhKllz_BqviVH2tH0BIOrfejVX6ziR7b-BEqXtDTVg6wG3oFwy_tiuatSZdeARIBCgyyr6Dd5bEGv5LQ_-qDtP_f_lUNAsLMO3FX3irFaqjjnSyloBP8W"/>
+<div class="overflow-hidden">
+<p class="font-body-md font-bold truncate">Dr. Aris Thorne</p>
+<p class="font-label-sm text-on-surface-variant truncate">Inventory Head</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-64 min-h-screen">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-16 bg-surface border-b border-outline-variant sticky top-0 z-40">
+<h2 class="font-headline-md text-headline-md font-black tracking-tighter text-primary">Dashboard</h2>
+<div class="flex items-center gap-unit-8">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="bg-surface-container-low border border-outline-variant pl-10 pr-4 py-2 w-80 font-body-md focus:border-academic-blue focus:ring-0 transition-all" placeholder="Search equipment, members..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-low" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-low" data-icon="help_outline">help_outline</button>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-margin-desktop space-y-unit-8 max-w-container-max mx-auto">
+<!-- KPI Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- KPI 1 -->
+<div class="bg-surface border border-outline-variant p-unit-6 flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<p class="font-label-sm text-on-surface-variant uppercase">Active Borrows</p>
+<span class="bg-secondary-fixed text-on-secondary-fixed font-label-sm px-2 py-1">STABLE</span>
+</div>
+<p class="font-display-lg text-display-lg">142</p>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface border border-outline-variant p-unit-6 flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<p class="font-label-sm text-on-surface-variant uppercase">Items Available</p>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed font-label-sm px-2 py-1">94%</span>
+</div>
+<p class="font-display-lg text-display-lg">2,840</p>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface border border-outline-variant p-unit-6 flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<p class="font-label-sm text-on-surface-variant uppercase">Pending Requests</p>
+<span class="bg-secondary-container text-on-secondary-container font-label-sm px-2 py-1">+12</span>
+</div>
+<p class="font-display-lg text-display-lg">28</p>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface border border-outline-variant p-unit-6 flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<p class="font-label-sm text-on-surface-variant uppercase">Overdue Items</p>
+<span class="bg-error-container text-on-error-container font-label-sm px-2 py-1">CRITICAL</span>
+</div>
+<p class="font-display-lg text-display-lg text-error">07</p>
+</div>
+</div>
+<!-- Two-Column Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Recent Activity (Left 2/3) -->
+<div class="lg:col-span-2 bg-surface border border-outline-variant flex flex-col">
+<div class="p-unit-6 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md">Recent Activity</h3>
+<button class="font-label-sm text-academic-blue hover:underline">VIEW ALL</button>
+</div>
+<div class="divide-y divide-outline-variant overflow-y-auto max-h-[400px]">
+<!-- Activity Item 1 -->
+<div class="p-unit-4 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="camera_alt">camera_alt</span>
+</div>
+<div>
+<p class="font-body-md font-bold">Sony Alpha A7 IV - Body Only</p>
+<p class="font-label-sm text-on-surface-variant">Borrowed by Julian Vane (Student ID: 4492)</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-sm font-bold">14:22 PM</p>
+<p class="font-label-sm text-univ-green">COMPLETED</p>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="p-unit-4 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-highest text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</div>
+<div>
+<p class="font-body-md font-bold">Rode NT1-A Microphone Kit</p>
+<p class="font-label-sm text-on-surface-variant">Returned by Elena Moss (Faculty)</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-sm font-bold">12:05 PM</p>
+<p class="font-label-sm text-academic-blue">PROCESSING</p>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="p-unit-4 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-highest text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="laptop_mac">laptop_mac</span>
+</div>
+<div>
+<p class="font-body-md font-bold">MacBook Pro 16" M2 Max</p>
+<p class="font-label-sm text-on-surface-variant">Request by Marcus Chen (Research)</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-sm font-bold">11:15 AM</p>
+<p class="font-label-sm text-on-surface-variant">PENDING</p>
+</div>
+</div>
+<!-- Activity Item 4 -->
+<div class="p-unit-4 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="theater_comedy">theater_comedy</span>
+</div>
+<div>
+<p class="font-body-md font-bold">Stage Lighting Rig - LED Par</p>
+<p class="font-label-sm text-on-surface-variant">Borrowed by Drama Society</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-sm font-bold">09:40 AM</p>
+<p class="font-label-sm text-univ-green">COMPLETED</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Categories (Right 1/3) -->
+<div class="bg-surface border border-outline-variant p-unit-6">
+<h3 class="font-headline-md text-headline-md mb-6">Top Categories</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between font-label-sm">
+<span>AUDIO/VISUAL</span>
+<span class="font-bold">42%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1">
+<div class="bg-primary h-full w-[42%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-sm">
+<span>LAB EQUIPMENT</span>
+<span class="font-bold">28%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1">
+<div class="bg-primary h-full w-[28%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-sm">
+<span>SPORTS &amp; RECREATION</span>
+<span class="font-bold">15%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1">
+<div class="bg-primary h-full w-[15%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-sm">
+<span>EVENT FURNITURE</span>
+<span class="font-bold">10%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1">
+<div class="bg-primary h-full w-[10%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-sm">
+<span>COMPUTING</span>
+<span class="font-bold">5%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1">
+<div class="bg-primary h-full w-[5%]"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant">
+<p class="font-body-md text-on-surface-variant italic">"A-V equipment currently shows 12% higher utilization than previous academic term."</p>
+</div>
+</div>
+</div>
+<!-- Full-Width Equipment Grid -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline-md text-headline-md">Available Equipment</h3>
+<p class="font-body-md text-on-surface-variant">Ready for immediate dispatch.</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface border border-outline-variant px-4 py-2 font-label-sm flex items-center gap-2 hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span> FILTER
+                        </button>
+<button class="bg-surface border border-outline-variant px-4 py-2 font-label-sm flex items-center gap-2 hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="sort">sort</span> SORT
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
+<!-- Item Card 1 -->
+<div class="bg-surface border border-outline-variant flex flex-col group hover:border-primary transition-colors">
+<div class="aspect-square bg-surface-container-low relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A professional, high-end photography of a black digital cinema camera body on a clean, stark white studio background. The lighting is crisp and detailed, showcasing the industrial textures of the equipment. The shot is captured in a minimalist, haute utilitarian style with sharp focus and no environmental distractions, aligning with the university's premium institutional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB_5Q06uPlHtCa59GDPfMydSFw4PimtC9mBaw21KzLMtbqoBuZzdbvXphDd9GiN_esME4MNxDGFKcl56ul3SFoHWZI7xEoQFa0ACiYAHbdCPsv4xTbY4vyC3dHOqlpqN0t0Q0JPOKNrUYhk3U5wZjAQD3krddSy3VwWjgXRNxExPBQLnsFVEukz_-M9iIlDobsCg7idl-BNDdpr8_PempmS3KRK8Bu7FgaiA1KCIi0Lqr69hvx86Fv2kTYs_17uDd8338Ktn5aqcSJ"/>
+<div class="absolute top-4 right-4">
+<span class="bg-univ-green text-on-primary font-label-sm px-3 py-1">AVAILABLE</span>
+</div>
+</div>
+<div class="p-unit-4 space-y-3 flex-grow flex flex-col">
+<div>
+<p class="font-label-sm text-academic-blue uppercase">Cinematography</p>
+<h4 class="font-body-md font-bold mt-1">Blackmagic Pocket Cinema 6K G2</h4>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="font-label-sm">Media Hub B-12</span>
+</div>
+<div class="mt-auto pt-4 flex gap-2">
+<button class="flex-grow bg-primary text-on-primary py-2 font-bold hover:bg-zinc-800 transition-colors">BORROW</button>
+<button class="w-10 border border-outline-variant flex items-center justify-center hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="bg-surface border border-outline-variant flex flex-col group hover:border-primary transition-colors">
+<div class="aspect-square bg-surface-container-low relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A high-contrast studio photograph of a premium pair of professional over-ear monitor headphones, featuring brushed metal and matte black finishes. The image is set against a neutral, light-gray background with minimalist aesthetic. Every detail of the construction is visible under soft but precise lighting, reflecting high performance and reliability for academic media work." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAMq33Rta0PBRW3KUrBWfEQvJJty2JCfAFgedWml0-A0u3UDQSXaSNfp4rlpoSFKjVO1pegfzW-wQH7CGB6Qzj9DEPmDXbDvoe1dPDuiyZtJz1Qz5jPXiVbAtNUC_IoRButtrOxgZ8XojpzxcjlYNd98GJentvs3-B8rw2KL2jVsWEaEjWTyLfOckr_pS728sANbLGJjMc9JlVQQ5RRUoN4DN74D3_5WvZrQox0ZWL-jd34VvD732ES7MmKx3jyxxNnwcSmaxeQBjp"/>
+<div class="absolute top-4 right-4">
+<span class="bg-univ-green text-on-primary font-label-sm px-3 py-1">AVAILABLE</span>
+</div>
+</div>
+<div class="p-unit-4 space-y-3 flex-grow flex flex-col">
+<div>
+<p class="font-label-sm text-academic-blue uppercase">Audio Production</p>
+<h4 class="font-body-md font-bold mt-1">Sennheiser HD 600 Open Back</h4>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="font-label-sm">Sound Lab 04</span>
+</div>
+<div class="mt-auto pt-4 flex gap-2">
+<button class="flex-grow bg-primary text-on-primary py-2 font-bold hover:bg-zinc-800 transition-colors">BORROW</button>
+<button class="w-10 border border-outline-variant flex items-center justify-center hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="bg-surface border border-outline-variant flex flex-col group hover:border-primary transition-colors">
+<div class="aspect-square bg-surface-container-low relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A detailed, clean product shot of a silver laptop stand with a sleek, ergonomic design, presented on a white minimalist surface. The lighting is bright and even, highlighting the metallic texture and sharp structural lines. The mood is functional and refined, embodying the utilitarian luxury of university inventory management systems." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQIg9vzE27A40LLbQiQqbwQEihS0hjQDkdScjXuXO9k1ojMMf3qEZpD7uA_NgbPZA0KY0fPwuNkgc8DEmiKqxOkrdi-veVBb2O8b-XFCg7jmVAyyZGvhD8W8ipU29p6Ol5EpUypWGjf8UG4RCWK5Df50cjMA4iibH5PIo3uuutgKRXvdS04Ql-0cCzcx_L5L0_o58YQ_Spxlc-Zj6u1oqMx1UeIAhhTyc0bgq2IjWv-SgzVB3-cWxktUdVyumZ8NQ1GMcCwMCJsNoe"/>
+<div class="absolute top-4 right-4">
+<span class="bg-academic-blue text-on-primary font-label-sm px-3 py-1">LAST ITEM</span>
+</div>
+</div>
+<div class="p-unit-4 space-y-3 flex-grow flex flex-col">
+<div>
+<p class="font-label-sm text-academic-blue uppercase">Computing</p>
+<h4 class="font-body-md font-bold mt-1">Twelve South HiRise Stand</h4>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="font-label-sm">Central Library</span>
+</div>
+<div class="mt-auto pt-4 flex gap-2">
+<button class="flex-grow bg-primary text-on-primary py-2 font-bold hover:bg-zinc-800 transition-colors">BORROW</button>
+<button class="w-10 border border-outline-variant flex items-center justify-center hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item Card 4 -->
+<div class="bg-surface border border-outline-variant flex flex-col group hover:border-primary transition-colors">
+<div class="aspect-square bg-surface-container-low relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A professional studio capture of a high-end portable projector in white and charcoal finishes, positioned on a minimalist pedestal against a soft grey background. The lighting highlights the clean lenses and vents, stressing precision engineering. The composition is centered and balanced, suitable for an institutional equipment catalogue." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdTlPD88n4hRiCa8bGhqT93rGWvSAto_ur9Ez4HEEBT-dt8bloKayFrOODH5_j-zvVukRQglt7tdQ4KIzACle1uTfdlnIPMGF2jFupWGb_HUXP3W8xDxvhKRKTcJrtwVSqxSu9bGOOrYfPa-CICVWNzDCcUvd_UqHZxLoLNJ_SwG4iql0Ob8ujhwkSTpefpb5NFZEl3UEx8-BSy1m6Wmb2pUiah4tWE0L6WSawDwd4Ue0EFMbvWS2XbO_2HQOkegUx981Djv-parf8"/>
+<div class="absolute top-4 right-4">
+<span class="bg-univ-green text-on-primary font-label-sm px-3 py-1">AVAILABLE</span>
+</div>
+</div>
+<div class="p-unit-4 space-y-3 flex-grow flex flex-col">
+<div>
+<p class="font-label-sm text-academic-blue uppercase">Presentation</p>
+<h4 class="font-body-md font-bold mt-1">Epson EF-12 Laser Projector</h4>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="font-label-sm">Lecture Hall 302</span>
+</div>
+<div class="mt-auto pt-4 flex gap-2">
+<button class="flex-grow bg-primary text-on-primary py-2 font-bold hover:bg-zinc-800 transition-colors">BORROW</button>
+<button class="w-10 border border-outline-variant flex items-center justify-center hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Decoration -->
+<footer class="p-margin-desktop border-t border-outline-variant bg-surface mt-unit-12">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-sm text-on-surface-variant">© 2024 CLUBSTOCK UNIVERSITY SYSTEM • V 2.4.0-ACADEMIC</p>
+<div class="flex gap-gutter font-label-sm">
+<a class="hover:text-primary transition-colors" href="#">INVENTORY POLICY</a>
+<a class="hover:text-primary transition-colors" href="#">SYSTEM STATUS</a>
+<a class="hover:text-primary transition-colors" href="#">ADMIN SUPPORT</a>
+</div>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interaction for KPI cards numerical counting effect (simulated)
+        document.querySelectorAll('.font-display-lg').forEach(el => {
+            const finalVal = parseInt(el.innerText.replace(/,/g, ''));
+            if(isNaN(finalVal)) return;
+            
+            let start = 0;
+            const duration = 1500;
+            const startTime = performance.now();
+
+            function update(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.floor(progress * finalVal);
+                el.innerText = current.toLocaleString();
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.innerText = finalVal.toLocaleString();
+                }
+            }
+            requestAnimationFrame(update);
+        });
+
+        // Search bar focus interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+    </script>
+</body></html>
