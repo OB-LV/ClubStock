@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import loginImage from './assets/login2.jpg';
 
 const UNI_GREEN = '#1E5A34';
 const PRIMARY = '#000000';
@@ -137,7 +138,7 @@ const styles = {
   imageBg: {
     width: '100%',
     height: '100%',
-    backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuB62IXO414HTiaaVGo1BvC0pDR9OGchEGb7OwJmDqlJ3xoaEdsM-52l97CgcREewZ-XtDVuiWVtix7EkrWGuaFo8bYr69CtOV3e8QJ3hgOh06zmGZARPO8MJwpiTpIJOWud5ndy8PVx2WDOVxYsMXaMClvMF1TRzZ42I5potdwT_CigRwLTqFJtPQMZcOm6ArTjeHoI91dCRsleZQH1P1DzmZO7QTHvSjjNN8oxprkKHIvcPIqqPyOfMzORVnKXJb9Q0ab_veqzCjnQ')",
+    backgroundImage: `url(${loginImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
